@@ -18,10 +18,11 @@ A fast and automated script to iteratively clear all items from your Steam wishl
 ## How It Works
 
 Modern Steam wishlist pages use server-side rendering (SSR) containing a `<script id="valve-ssr-data">` tag. This tag embeds:
-1. `strWebAPIToken`: A signed Steam Web API JWT bearer token issued for store operations.
-2. `renderContext.queryData`: Cached data containing the complete list of games on your wishlist with their `appid`.
+    1. `strWebAPIToken`: A signed Steam Web API JWT bearer token issued for store operations.
+    2. `renderContext.queryData`: Cached data containing the complete list of games on your wishlist with their `appid`.
 
 The script extracts these credentials and sends iterative `POST` requests to:
+
 ```text
 https://api.steampowered.com/IWishlistService/RemoveFromWishlist/v1/
 ```
@@ -34,17 +35,21 @@ https://api.steampowered.com/IWishlistService/RemoveFromWishlist/v1/
 
 1. Ensure [wishlist.html](wishlist.html) is located in the same directory as [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js).
 2. Run the script:
+
    ```bash
    node steam-wishlist-cleaner.js
    ```
+
 3. Watch the console output as items are iteratively removed.
 
 ### Option 2: Running in the Browser Console
 
 1. In your web browser, navigate to your Steam Wishlist:
+
    ```text
    https://store.steampowered.com/wishlist/
    ```
+
 2. Open your browser's Developer Tools (`F12` or `Ctrl + Shift + I` / `Cmd + Option + I`).
 3. Switch to the **Console** tab.
 4. Copy the entire contents of [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js), paste into the console, and press `Enter`.
