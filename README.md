@@ -71,4 +71,4 @@ You can customize the settings at the top of [steam-wishlist-cleaner.js](steam-w
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE). TETS
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
