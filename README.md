@@ -1,15 +1,13 @@
 # Steam Wishlist Cleaner
 
-A fast and automated script to iteratively clear all items from your Steam wishlist using the official **Steam Web API** (`IWishlistService/RemoveFromWishlist`).
+A fast and automated browser console script to iteratively clear all items from your Steam wishlist using the official **Steam Web API** (`IWishlistService/RemoveFromWishlist`).
 
 ---
 
 ## Features
 
 - **Steam Web API Powered**: Uses Steam's modern service endpoint (`IWishlistService/RemoveFromWishlist/v1`) with authenticated Web API tokens.
-- **Dual Environment Support**:
-  - **Node.js**: Automatically parses your saved `wishlist.html` to extract the authentication token and the list of AppIDs. Zero external dependencies required.
-  - **Browser Console**: Can be pasted directly into DevTools on `https://store.steampowered.com/wishlist/` while logged in.
+- **Zero Dependencies**: Pure vanilla JavaScript designed to run directly in your browser's Developer Tools console.
 - **Detailed Progress Logging**: Real-time `console.log()` updates showing item index, percentage completed, AppID, removal status, and a final summary.
 - **Rate-Limit & Error Protection**: Includes customizable delay between requests (default `250ms`) and automatic retry backoff on HTTP 429 (Too Many Requests).
 
@@ -18,10 +16,11 @@ A fast and automated script to iteratively clear all items from your Steam wishl
 ## How It Works
 
 Modern Steam wishlist pages use server-side rendering (SSR) containing a `<script id="valve-ssr-data">` tag. This tag embeds:
-    1. `strWebAPIToken`: A signed Steam Web API JWT bearer token issued for store operations.
-    2. `renderContext.queryData`: Cached data containing the complete list of games on your wishlist with their `appid`.
 
-The script extracts these credentials and sends iterative `POST` requests to:
+1. `strWebAPIToken`: A signed Steam Web API JWT bearer token issued for store operations.
+2. `renderContext.queryData`: Cached data containing the complete list of games on your wishlist with their `appid`.
+
+The script extracts these credentials directly from the page DOM and sends iterative `POST` requests to:
 
 ```text
 https://api.steampowered.com/IWishlistService/RemoveFromWishlist/v1/
@@ -31,29 +30,17 @@ https://api.steampowered.com/IWishlistService/RemoveFromWishlist/v1/
 
 ## Usage
 
-### Option 1: Running in Node.js
-
-1. Ensure [wishlist.html](wishlist.html) is located in the same directory as [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js).
-2. Run the script:
-
-   ```bash
-   node steam-wishlist-cleaner.js
-   ```
-
-3. Watch the console output as items are iteratively removed.
-
-### Option 2: Running in the Browser Console
-
 1. In your web browser, navigate to your Steam Wishlist:
 
    ```text
    https://store.steampowered.com/wishlist/
    ```
 
-2. Open your browser's Developer Tools (`F12` or `Ctrl + Shift + I` / `Cmd + Option + I`).
-3. Switch to the **Console** tab.
-4. Copy the entire contents of [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js), paste into the console, and press `Enter`.
-5. Once finished, refresh the page (`F5`) to verify your wishlist is empty.
+2. Ensure you are logged into your Steam account.
+3. Open your browser's Developer Tools (`F12` or `Ctrl + Shift + I` / `Cmd + Option + I`).
+4. Switch to the **Console** tab.
+5. Copy the entire contents of [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js), paste into the console, and press `Enter`.
+6. Once finished, refresh the page (`F5`) to verify your wishlist is empty.
 
 ---
 

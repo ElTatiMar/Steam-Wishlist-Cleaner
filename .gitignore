@@ -1,8 +1,5 @@
-# Project specific
+# Local data & test files
 wishlist.html
-
-# Dependencies
-node_modules/
 
 # Environment & credentials
 .env
@@ -10,19 +7,9 @@ node_modules/
 .env.*.local
 *.pem
 
-# Logs
+# Logs & temp files
 logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Runtime & temporary files
-pids/
-*.pid
-*.seed
-*.pid.lock
 tmp/
 temp/
 
