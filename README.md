@@ -62,7 +62,7 @@ https://api.steampowered.com/IWishlistService/RemoveFromWishlist/v1/
 You can customize the settings at the top of [steam-wishlist-cleaner.js](steam-wishlist-cleaner.js):
 
 | Option | Default | Description |
-|---|---|---|
+| --- | --- | --- |
 | `delayMs` | `250` | Delay between consecutive removals in milliseconds to prevent rate limiting. |
 | `maxRetries` | `3` | Maximum retry attempts per item if an error or HTTP 429 occurs. |
 | `retryDelayMs` | `2500` | Base backoff delay (in milliseconds) before retrying a failed request. |
